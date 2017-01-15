@@ -5,19 +5,15 @@ import json
 # Constructor of Movie Class takes title, description, image URL
 # and web URL as argument
 
+
 def get_info(movie_name):
     # Get a response after opening the URL
-    response = urllib.urlopen("http://www.omdbapi.com/?t="+movie_name+"&y=&plot=short&r=json")
-    
+    response = urllib.urlopen("http://www.omdbapi.com/?t="+movie_name+"&y=&plot=short&r=json")  # NOQA
     # Data from the website in the form of JSON is recieved
     output = response.read()
-    
     # Parsing Values from JSON data
     wjdata = json.loads(output)
-
     return wjdata
-    
-
 data = get_info("Toy Story")
 
 toy_story = media.Movie(data['Title'], data['Plot'], data['Poster'],
@@ -49,6 +45,6 @@ idiots = media.Movie(data['Title'], data['Plot'], data['Poster'],
 # List of Movie objects
 movies = [idiots, toy_story, avatar, interstellar, ratatouille,
           midnight_in_paris]
-
-# Method which takes the Array of Movie objects as argument and convert into a website
+# Method which takes the Array of Movie objects as argument
+# and convert into a website
 fresh_tomatoes.open_movies_page(movies)
